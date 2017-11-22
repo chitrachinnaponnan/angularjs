@@ -1,15 +1,16 @@
 (function() {
-  angular.module('FoodItemsApp',[])
-  .controller('FoodItemsController',FoodItemsController)
-  FoodItemsController.$inject = ['$scope'];
-  function FoodItemsController($scope) {
+  angular.module('LunchCheck',[])
+  .controller('LunchCheckController',LunchCheckController)
+  LunchCheckController.$inject = ['$scope'];
+  function LunchCheckController($scope) {
     $scope.fooditems="";
     $scope.noOfFoodItems=0;
     $scope.status="";
     $scope.calculateNoOfFoodItems = function() {
-    if($scope.fooditems == "")
+    if($scope.fooditems == "") {
       $scope.status = "Please enter data first";
-    return;
+      return;
+  }
     var totalItems = parseAndCalculate($scope.fooditems);
     $scope.noOfFoodItems = totalItems;
     if(totalItems<=3)
